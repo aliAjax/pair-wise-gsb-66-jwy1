@@ -15,7 +15,7 @@ const title = computed(() => route.name === 'track' ? '区段里程与缺陷分�
       <nav>
         <RouterLink to="/"><span>缺陷总览</span><small>{{ store.filtered.length }} 项</small></RouterLink>
         <RouterLink to="/track"><span>里程与区段</span><small>Canvas</small></RouterLink>
-        <RouterLink to="/work-orders"><span>整治复测</span><small>{{ store.defects.filter((item) => item.status !== '已关闭').length }} 项</small></RouterLink>
+        <RouterLink to="/work-orders"><span>整治复测</span><small>{{ store.defects.filter((item) => item.status !== '已关闭').length }} 项<template v-if="store.recheckDefects.length || store.pendingBatches.length"> · {{ store.recheckDefects.length }}待核对 / {{ store.pendingBatches.length }}未提交</template></small></RouterLink>
         <RouterLink to="/audit"><span>审计追溯</span><small>{{ store.audit.length }} 条</small></RouterLink>
       </nav>
       <div class="aside-data"><span>数据接入</span><strong>轨检车数据已导入</strong><small>本地持久化 / 可离线补录</small></div>
