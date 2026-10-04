@@ -39,6 +39,24 @@ export interface RetestResult {
   note: string
   tester: string
   testedAt: string
+  batchId?: string
+}
+
+export type RetestBatchStatus = '待提交' | '待核对' | '已确认' | '已驳回'
+
+export interface RetestBatch {
+  id: string
+  defectId: string
+  round: number
+  measuredValue: number
+  limit: number
+  note: string
+  tester: string
+  testedAt: string
+  createdAt: string
+  status: RetestBatchStatus
+  attempts: number
+  lastError?: string
 }
 
 export interface Defect {
@@ -65,4 +83,5 @@ export interface AuditEntry {
   operator: string
   detail: string
   createdAt: string
+  batchId?: string
 }

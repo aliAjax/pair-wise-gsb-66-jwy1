@@ -17,8 +17,8 @@ function exportReport() {
     <div class="section-head"><div><h2>整治审计与版本追溯</h2><p>检测数据、批量派工、限速调整、离线补录和复测轮次全部留痕。</p></div><v-btn color="primary" @click="exportReport">导出整治报告</v-btn></div>
     <div class="toolbar single"><v-text-field v-model="keyword" density="compact" variant="outlined" hide-details prepend-inner-icon="mdi-magnify" placeholder="搜索实体、动作、操作人或说明" /><span>共{{ rows.length }}条</span></div>
     <v-table density="compact">
-      <thead><tr><th>时间</th><th>实体</th><th>动作</th><th>操作人</th><th>说明</th></tr></thead>
-      <tbody><tr v-for="item in rows" :key="item.id"><td>{{ item.createdAt.replace('T', ' ').slice(0, 16) }}</td><td>{{ item.entityId }}</td><td>{{ item.action }}</td><td>{{ item.operator }}</td><td>{{ item.detail }}</td></tr></tbody>
+      <thead><tr><th>时间</th><th>实体</th><th>动作</th><th>操作人</th><th>说明</th><th>批次</th></tr></thead>
+      <tbody><tr v-for="item in rows" :key="item.id"><td>{{ item.createdAt.replace('T', ' ').slice(0, 16) }}</td><td>{{ item.entityId }}</td><td>{{ item.action }}</td><td>{{ item.operator }}</td><td>{{ item.detail }}</td><td>{{ item.batchId ?? '—' }}</td></tr></tbody>
     </v-table>
   </section>
 </template>
